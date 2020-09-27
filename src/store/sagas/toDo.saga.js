@@ -1,5 +1,7 @@
 import { put, takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
+import * as actions from "../actions/action";
+
 function* toDoSaga(action) {
   //The Saga acts as a middleware before reducer,you can make api calls or log before reducer gets the action
   try {
@@ -11,10 +13,7 @@ function* toDoSaga(action) {
     console.log(
       `Initiation to add  ${response.task} Task Done at ${new Date()}`
     );
-    yield put({
-      type: actionTypes.ADD,
-      payload: response
-    });
+    yield put(actions.onAddTask(response));
   } catch (error) {
     console.log("Error", error);
   }

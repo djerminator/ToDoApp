@@ -3,44 +3,55 @@ import { connect } from "react-redux";
 import { Button } from "../constants/appCss.constants";
 import * as actionTypes from "../store/actions/actionTypes";
 
+const ButtonCreator = (
+  displayName,
+  noOfTasks,
+  onClickFunctionHandler,
+  buttonType,
+  appButtonState
+) => {
+  return (
+    <Button
+      onClick={onClickFunctionHandler}
+      disabled={appButtonState === buttonType}
+      style={
+        appButtonState === buttonType
+          ? { cursor: "not-allowed", background: "gray", color: "white" }
+          : { cursor: "pointer", background: "white", color: "palevioletred" }
+      }
+    >
+      {displayName} ({noOfTasks})
+    </Button>
+  );
+};
+
 const ButtonsBar = (props) => {
   const { totalTask, activeTask } = props;
   const completedTask = totalTask - activeTask;
+
   return (
     <>
-      <Button
-        onClick={props.onAll}
-        disabled={props.buttonState === actionTypes.SHOW_ALL}
-        style={
-          props.buttonState === actionTypes.SHOW_ALL
-            ? { cursor: "not-allowed", background: "gray", color: "white" }
-            : { cursor: "pointer", background: "white", color: "palevioletred" }
-        }
-      >
-        All ({totalTask})
-      </Button>
-      <Button
-        onClick={props.onActive}
-        disabled={props.buttonState === actionTypes.SHOW_ACTIVE}
-        style={
-          props.buttonState === actionTypes.SHOW_ACTIVE
-            ? { cursor: "not-allowed", background: "gray", color: "white" }
-            : { cursor: "pointer", background: "white", color: "palevioletred" }
-        }
-      >
-        Active ({activeTask})
-      </Button>
-      <Button
-        onClick={props.onCompleted}
-        disabled={props.buttonState === actionTypes.SHOW_COMPLETED}
-        style={
-          props.buttonState === actionTypes.SHOW_COMPLETED
-            ? { cursor: "not-allowed", background: "gray", color: "white" }
-            : { cursor: "pointer", background: "white", color: "palevioletred" }
-        }
-      >
-        Completed ({completedTask})
-      </Button>
+      {ButtonCreator(
+        "ALL",
+        totalTask,
+        props.onAll,
+        actionTypes.SHOW_ALL,
+        props.buttonState
+      )}
+      {ButtonCreator(
+        "Active",
+        activeTask,
+        props.onActive,
+        actionTypes.SHOW_ACTIVE,
+        props.buttonState
+      )}
+      {ButtonCreator(
+        "Completed",
+        completedTask,
+        props.onCompleted,
+        actionTypes.SHOW_COMPLETED,
+        props.buttonState
+      )}
     </>
   );
 };

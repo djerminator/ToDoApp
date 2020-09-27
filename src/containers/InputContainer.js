@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (newItem) => {
-    dispatch(actions.onAddTask(newItem));
+    dispatch(actions.onAddInitiateTask(newItem));
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(InputContainer);

@@ -1,34 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import { TasklistIcon, TrashIcon } from "@primer/octicons-react";
-import { Button, Div } from "../constatns/appCss.constants";
-
-const ButtonComplete = styled(Button)`
-  margin: 5px;
-  width: auto;
-  height: auto;
-  padding: 0;
-  border: 0;
-  background: lightgrey;
-  &:hover {
-    background: blue;
-    color: black;
-  }
-`;
-
-const ButtonDelete = styled(Button)`
-  margin: 5px;
-  width: auto;
-  height: auto;
-  padding: 0;
-  border: 0;
-  background: lightgrey;
-  &:hover {
-    background: red;
-    color: black;
-  }
-`;
+import {
+  Div,
+  ButtonComplete,
+  ButtonDelete
+} from "../constants/appCss.constants";
 
 const TaskComponent = (props) => {
   const { task, pending, id } = props;
@@ -38,7 +15,7 @@ const TaskComponent = (props) => {
       <div style={{ float: "right" }}>
         {pending && (
           <ButtonComplete
-            title="Mark Complete"
+            title="Task Completed"
             onClick={() => props.onCompleted(id)}
           >
             <TasklistIcon size={20} />

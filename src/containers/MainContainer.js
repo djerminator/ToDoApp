@@ -1,35 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import { SmileyIcon } from "@primer/octicons-react";
 import InputContainer from "./InputContainer";
 import { Tasks } from "./Tasks";
 import ButtonsBar from "./ButtonsBar";
-import { SmileyIcon } from "@primer/octicons-react";
-import { WrapperDiv, WrapperAlert } from "../constatns/appCss.constants";
+import { WrapperDiv, WrapperAlert } from "../constants/appCss.constants";
+import { getTasksOfButtonState } from "./util/containers.util";
 const MainContainer = (props) => {
-  const [buttonState, setbuttonState] = useState("ALL");
-  let showTasks = props.toDolist;
   const pendingTasks = props.toDolist.filter((task) => {
     return task.pending;
   });
-  switch (buttonState) {
-    case "ALL": {
-      showTasks = props.toDolist;
-      break;
-    }
-    case "ACTIVE": {
-      showTasks = pendingTasks;
-      break;
-    }
-    case "COMPLETED": {
-      showTasks = props.toDolist.filter((task) => {
-        return !task.pending;
-      });
-      break;
-    }
-    default:
-      showTasks = props.toDolist;
-  }
-
+  const tasksToBeDisplayed = getTasksOfButtonState(
+    props.buttonState,
+    props.toDolist,
+    pendingTasks
+  );
   return (
     <>
       <InputContainer />
@@ -42,16 +27,19 @@ const MainContainer = (props) => {
           </WrapperAlert>
         </WrapperDiv>
       )}
-      <Tasks tasks={showTasks} />
+      <Tasks tasks={tasksToBeDisplayed} />
       <ButtonsBar
-        setButtonHandler={setbuttonState}
-        currentState={buttonState}
+        totalTask={props.toDolist.length}
+        activeTask={pendingTasks.length}
       />
     </>
   );
 };
 
 const MapStateToProps = (state) => {
-  return { toDolist: state.toDo.todoArray };
+  return {
+    toDolist: state.toDo.todoArray,
+    buttonState: state.button.buttonState
+  };
 };
 export default connect(MapStateToProps)(MainContainer);

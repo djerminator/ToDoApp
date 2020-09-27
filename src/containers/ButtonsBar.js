@@ -1,45 +1,54 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "../constatns/appCss.constants";
+import { Button } from "../constants/appCss.constants";
+import * as actionTypes from "../store/actions/actionTypes";
 
 const ButtonsBar = (props) => {
+  const { totalTask, activeTask } = props;
+  const completedTask = totalTask - activeTask;
   return (
     <>
       <Button
-        onClick={() => props.setButtonHandler("ALL")}
-        disabled={props.currentState === "ALL"}
+        onClick={props.onAll}
+        disabled={props.buttonState === actionTypes.SHOW_ALL}
         style={
-          props.currentState === "ALL"
-            ? { cursor: "not-allowed" }
-            : { cursor: "pointer" }
+          props.buttonState === actionTypes.SHOW_ALL
+            ? { cursor: "not-allowed", background: "gray", color: "white" }
+            : { cursor: "pointer", background: "white", color: "palevioletred" }
         }
       >
-        All
+        All ({totalTask})
       </Button>
       <Button
-        onClick={() => props.setButtonHandler("ACTIVE")}
-        disabled={props.currentState === "ACTIVE"}
+        onClick={props.onActive}
+        disabled={props.buttonState === actionTypes.SHOW_ACTIVE}
         style={
-          props.currentState === "ACTIVE"
-            ? { cursor: "not-allowed" }
-            : { cursor: "pointer" }
+          props.buttonState === actionTypes.SHOW_ACTIVE
+            ? { cursor: "not-allowed", background: "gray", color: "white" }
+            : { cursor: "pointer", background: "white", color: "palevioletred" }
         }
       >
-        Active
+        Active ({activeTask})
       </Button>
       <Button
-        onClick={() => props.setButtonHandler("COMPLETED")}
-        disabled={props.currentState === "COMPLETED"}
+        onClick={props.onCompleted}
+        disabled={props.buttonState === actionTypes.SHOW_COMPLETED}
         style={
-          props.currentState === "COMPLETED"
-            ? { cursor: "not-allowed" }
-            : { cursor: "pointer" }
+          props.buttonState === actionTypes.SHOW_COMPLETED
+            ? { cursor: "not-allowed", background: "gray", color: "white" }
+            : { cursor: "pointer", background: "white", color: "palevioletred" }
         }
       >
-        Completed
+        Completed ({completedTask})
       </Button>
     </>
   );
+};
+
+const MapStateToProps = (state) => {
+  return {
+    buttonState: state.button.buttonState
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -53,4 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: "SHOW_COMPLETED" });
   }
 });
-export default connect(null, mapDispatchToProps)(ButtonsBar);
+export default connect(MapStateToProps, mapDispatchToProps)(ButtonsBar);

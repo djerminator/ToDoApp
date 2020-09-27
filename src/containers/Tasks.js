@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "../constatns/appCss.constants";
+import { Wrapper } from "../constants/appCss.constants";
 import TaskComponent from "../components/Task";
 import "../styles.css";
 

@@ -1,19 +1,5 @@
 import styled from "styled-components";
 
-const size = {
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px"
-};
-
-export const device = {
-  mobileL: ` @media(min-width: ${size.mobileL})`,
-  tablet: ` @media(min-width: ${size.tablet})`,
-  laptop: ` @media(min-width: ${size.laptop})`
-};
-
 export const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
@@ -33,7 +19,7 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
-  width: 130px;
+  width: 140px;
   cursor: pointer;
 `;
 
@@ -76,4 +62,28 @@ export const WrapperAlert = styled.div`
   margin: 10px;
   display: flex;
   height: auto;
+`;
+
+export const ButtonComplete = styled(Button)`
+  margin: 5px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: lightgrey;
+  &:hover {
+    color: blue;
+  }
+`;
+
+export const ButtonDelete = styled(Button)`
+  margin: 5px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: lightgrey;
+  &:hover {
+    color: red;
+  }
 `;

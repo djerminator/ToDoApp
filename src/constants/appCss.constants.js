@@ -71,6 +71,18 @@ export const WrapperAlert = styled.div`
   border-radius: 3px;
 `;
 
+export const Header = styled.header`
+  width: 100%;
+  background: palevioletred;
+  justify-content: center;
+  padding: 0.5rem;
+  color: black;
+  min-height: 1.5rem;
+  font-size: 2rem;
+  top: 0;
+  margin: 0px;
+`;
+
 export const ButtonComplete = styled(Button)`
   margin: 3px;
   width: auto;

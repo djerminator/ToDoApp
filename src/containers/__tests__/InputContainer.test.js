@@ -16,8 +16,7 @@ const mockStore = configureStore();
 const store = mockStore(mockState);
 
 describe("InputContainer Test Cases", () => {
-  let component;
-  component = mount(
+  let component = mount(
     <Provider store={store}>
       <InputContainer
         onSubmit={() => jest.fn()}

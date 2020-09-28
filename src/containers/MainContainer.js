@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { SmileyIcon } from "@primer/octicons-react";
-import { WrapperAlert } from "../constants/appCss.constants";
+import { getTasksOfButtonState } from "./util/containers.util";
 import InputContainer from "./InputContainer";
+import { WrapperAlert, Header } from "../constants/appCss.constants";
 import { Tasks } from "./Tasks";
 import ButtonsBar from "./ButtonsBar";
-import { getTasksOfButtonState } from "./util/containers.util";
 
 const MainContainer = (props) => {
   const pendingTasks = props.toDolist.filter((task) => {
@@ -18,6 +18,7 @@ const MainContainer = (props) => {
   );
   return (
     <>
+      <Header>Welcome to Task Tracker</Header>
       <InputContainer />
       {!pendingTasks.length && (
         <WrapperAlert>

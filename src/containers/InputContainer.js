@@ -19,16 +19,20 @@ const InputContainer = (props) => {
   const [inputValue, inputValueHandler] = useState("");
   const [isError, setIsError] = useState(false);
   function onChangeHandler(event) {
+    //This function setsErrorPopup to hide
     setIsError(false);
     inputValueHandler(event.target.value);
     if (event.keyCode === 13) {
+      //KeyCode 13:Enter Key, Submit on Enter Key Press
       event.preventDefault();
       onSubmitHandler(inputValue);
     }
   }
 
   function beforeSubmitValidation(taskName) {
+    //Validates the taskName already Exists from active Tasks
     if (!taskName) {
+      //return if taskName is empty
       return false;
     }
     let taskDoesNotExist = true;
@@ -36,7 +40,7 @@ const InputContainer = (props) => {
     props.toDolist.forEach((item) => {
       if (item.task === taskName && item.pending) {
         taskDoesNotExist = false;
-        setIsError(true);
+        setIsError(true); //display error pop up
         return taskDoesNotExist;
       }
     });
@@ -45,11 +49,12 @@ const InputContainer = (props) => {
 
   function onSubmitHandler(taskName) {
     if (!beforeSubmitValidation(taskName)) {
+      //Do Nothing if validation fails
       return;
     }
     const newItem = { task: taskName, id: props.counter, pending: true };
-    inputValueHandler("");
-    props.onSubmit(newItem);
+    inputValueHandler(""); //Set Input Field to empty before submission
+    props.onSubmit(newItem); //Dispatch action
   }
   return (
     <>

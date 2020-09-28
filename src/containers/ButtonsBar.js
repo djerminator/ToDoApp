@@ -1,29 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "../constants/appCss.constants";
 import * as actionTypes from "../store/actions/actionTypes";
-
-const ButtonCreator = (
-  displayName,
-  noOfTasks,
-  onClickFunctionHandler,
-  buttonType,
-  appButtonState
-) => {
-  return (
-    <Button
-      onClick={onClickFunctionHandler}
-      disabled={appButtonState === buttonType}
-      style={
-        appButtonState === buttonType
-          ? { cursor: "not-allowed", background: "gray", color: "white" }
-          : { cursor: "pointer", background: "white", color: "palevioletred" }
-      }
-    >
-      {displayName} ({noOfTasks})
-    </Button>
-  );
-};
+import { ButtonCreator } from "../components/ButtonCreator";
 
 const ButtonsBar = (props) => {
   const { totalTask, activeTask } = props;

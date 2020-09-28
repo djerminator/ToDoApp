@@ -9,6 +9,9 @@ export const Input = styled.input`
   border-radius: 3px;
   width: auto;
   min-width: 220px;
+  @media (max-width: 310px) {
+    min-width: auto;
+  }
 `;
 
 export const Button = styled.button`

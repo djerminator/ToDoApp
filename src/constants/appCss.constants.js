@@ -34,19 +34,18 @@ export const Wrapper = styled.section`
 `;
 
 export const Div = styled.div`
-  padding: 5px;
   margin: 5px;
+  padding: 5px;
   font-size: 1em;
   background: lightgrey;
   border: 2px solid palevioletred;
   border-radius: 3px;
-  height: 40px;
   text-align: center;
 `;
 
 export const WrapperDiv = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   height: auto;
   justify-content: center;
   align-items: center;
@@ -55,17 +54,17 @@ export const WrapperDiv = styled.div`
 export const WrapperAlert = styled.div`
   width: auto;
   max-width: 400px;
-  background: lightblue;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
   padding: 10px;
   margin: 10px;
   display: flex;
   height: auto;
+  background: lightblue;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;
 
 export const ButtonComplete = styled(Button)`
-  margin: 5px;
+  margin: 0px;
   width: auto;
   height: auto;
   padding: 0;

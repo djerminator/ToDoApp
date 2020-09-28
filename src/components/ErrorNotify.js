@@ -6,7 +6,8 @@ import { WrapperDiv, WrapperAlert } from "../constants/appCss.constants";
 
 const WrapperAlertError = styled(WrapperAlert)`
   background: lightgrey;
-  border: "2px solid red";
+  border: 2px solid red;
+  border-radius: 3px;
 `;
 const CloseErrorButton = styled(Button)`
   width: auto;
@@ -15,7 +16,7 @@ const CloseErrorButton = styled(Button)`
   align-content: center;
   color: black;
   border: 0px solid black;
-  background: lightgray;
+  background: lightgrey;
   display: inline-block;
 `;
 

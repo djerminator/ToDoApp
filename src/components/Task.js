@@ -11,7 +11,19 @@ const TaskComponent = (props) => {
   const { task, pending, id } = props;
   return (
     <Div>
-      <span>{task}</span>
+      <div
+        style={{
+          float: "left",
+          textAlign: "center",
+          justifyContent: "center",
+          margin: "5px"
+        }}
+        size="20"
+        height="20"
+        width="20"
+      >
+        {task}
+      </div>
       <div style={{ float: "right" }}>
         {pending && (
           <ButtonComplete

@@ -42,12 +42,12 @@ const InputContainer = (props) => {
 
   function onSubmitHandler(taskName) {
     if (!beforeSubmitValidation(taskName)) {
-      return 0;
+      return;
     }
     inputValueHandler("");
     const newItem = { task: taskName, id: props.counter, pending: true };
     props.onSubmit(newItem);
-    return 0;
+    return;
   }
   return (
     <>

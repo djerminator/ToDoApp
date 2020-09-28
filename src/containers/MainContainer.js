@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { SmileyIcon } from "@primer/octicons-react";
-import { WrapperDiv, WrapperAlert } from "../constants/appCss.constants";
+import { WrapperAlert } from "../constants/appCss.constants";
 import InputContainer from "./InputContainer";
 import { Tasks } from "./Tasks";
 import ButtonsBar from "./ButtonsBar";
@@ -20,13 +20,11 @@ const MainContainer = (props) => {
     <>
       <InputContainer />
       {!pendingTasks.length && (
-        <WrapperDiv>
-          <WrapperAlert>
-            <span>
-              Relax !!! You have no pending tasks <SmileyIcon size={20} />
-            </span>
-          </WrapperAlert>
-        </WrapperDiv>
+        <WrapperAlert>
+          <span>
+            Relax !!! You have no pending tasks <SmileyIcon size={20} />
+          </span>
+        </WrapperAlert>
       )}
       <Tasks tasks={tasksToBeDisplayed} />
       <ButtonsBar

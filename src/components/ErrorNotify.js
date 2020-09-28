@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AlertIcon, XCircleIcon } from "@primer/octicons-react";
 import { Button } from "../constants/appCss.constants";
-import { WrapperDiv, WrapperAlert } from "../constants/appCss.constants";
+import { WrapperAlert } from "../constants/appCss.constants";
 
 const WrapperAlertError = styled(WrapperAlert)`
   background: lightgrey;
@@ -21,18 +21,16 @@ const CloseErrorButton = styled(Button)`
 `;
 
 export const ErrorNotification = (props) => (
-  <WrapperDiv>
-    <WrapperAlertError title="Error Notification">
-      <span>
-        <AlertIcon size={20} />
-        Task Name already exists in "Active Tasks"
-      </span>
-      <CloseErrorButton
-        onClick={() => props.setError(false)}
-        title="Close error Notification"
-      >
-        <XCircleIcon size={16} />
-      </CloseErrorButton>
-    </WrapperAlertError>
-  </WrapperDiv>
+  <WrapperAlertError title="Error Notification">
+    <span>
+      <AlertIcon size={20} />
+      Task Name already exists in "Active Tasks"
+    </span>
+    <CloseErrorButton
+      onClick={() => props.setError(false)}
+      title="Close error Notification"
+    >
+      <XCircleIcon size={16} />
+    </CloseErrorButton>
+  </WrapperAlertError>
 );

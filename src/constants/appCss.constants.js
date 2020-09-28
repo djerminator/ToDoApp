@@ -25,12 +25,19 @@ export const Button = styled.button`
 
 export const Wrapper = styled.section`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   height: auto;
   padding: 10px;
   margin: 10px;
   border: 2px solid black;
   border-radius: 3px;
+  min-width: 500px;
+  @media (max-width: 600px) {
+    min-width: 300px;
+  }
+  @media (max-width: 350px) {
+    min-width: 200px;
+  }
 `;
 
 export const Div = styled.div`
@@ -41,14 +48,12 @@ export const Div = styled.div`
   border: 2px solid palevioletred;
   border-radius: 3px;
   text-align: center;
-`;
-
-export const WrapperDiv = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  height: auto;
-  justify-content: center;
-  align-items: center;
+  @media (max-width: 550px) {
+    min-width: 100px;
+  }
+  @media (max-width: 350px) {
+    min-width: auto;
+  }
 `;
 
 export const WrapperAlert = styled.div`
@@ -64,7 +69,7 @@ export const WrapperAlert = styled.div`
 `;
 
 export const ButtonComplete = styled(Button)`
-  margin: 0px;
+  margin: 3px;
   width: auto;
   height: auto;
   padding: 0;
@@ -76,7 +81,7 @@ export const ButtonComplete = styled(Button)`
 `;
 
 export const ButtonDelete = styled(Button)`
-  margin: 5px;
+  margin: 3px;
   width: auto;
   height: auto;
   padding: 0;

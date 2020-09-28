@@ -10,6 +10,9 @@ const ButtonSubmit = styled(Button)`
   height: 30px;
   padding: 0;
   align-content: center;
+  @media (max-width: 350px) {
+    min-width: 100px;
+  }
 `;
 
 const InputContainer = (props) => {
@@ -17,12 +20,11 @@ const InputContainer = (props) => {
   const [isError, setIsError] = useState(false);
   function onChangeHandler(event) {
     setIsError(false);
+    inputValueHandler(event.target.value);
     if (event.keyCode === 13) {
       event.preventDefault();
       onSubmitHandler(inputValue);
-      return 0;
     }
-    inputValueHandler(event.target.value);
   }
 
   function beforeSubmitValidation(taskName) {
@@ -30,6 +32,7 @@ const InputContainer = (props) => {
       return false;
     }
     let taskDoesNotExist = true;
+    console.log("taskName", taskName);
     props.toDolist.forEach((item) => {
       if (item.task === taskName && item.pending) {
         taskDoesNotExist = false;
@@ -44,25 +47,26 @@ const InputContainer = (props) => {
     if (!beforeSubmitValidation(taskName)) {
       return;
     }
-    inputValueHandler("");
     const newItem = { task: taskName, id: props.counter, pending: true };
+    inputValueHandler("");
     props.onSubmit(newItem);
-    return;
   }
   return (
     <>
-      <Input
-        onChange={(event) => onChangeHandler(event)}
-        onKeyUp={(event) => onChangeHandler(event)}
-        value={inputValue}
-        placeholder="Enter the task name here"
-      />
-      <ButtonSubmit
-        title="Click to save"
-        onClick={() => onSubmitHandler(inputValue)}
-      >
-        <ChevronRightIcon size={20} />
-      </ButtonSubmit>
+      <div>
+        <Input
+          onChange={(event) => onChangeHandler(event)}
+          onKeyUp={(event) => onChangeHandler(event)}
+          value={inputValue}
+          placeholder="Enter the task name here"
+        />
+        <ButtonSubmit
+          title="Click to save"
+          onClick={() => onSubmitHandler(inputValue)}
+        >
+          <ChevronRightIcon size={20} />
+        </ButtonSubmit>
+      </div>
       {isError && <ErrorNotification setError={setIsError} />}
     </>
   );

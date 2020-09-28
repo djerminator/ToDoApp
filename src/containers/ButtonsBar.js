@@ -8,7 +8,7 @@ const ButtonsBar = (props) => {
   const completedTask = totalTask - activeTask;
 
   return (
-    <>
+    <div>
       {ButtonCreator(
         "ALL",
         totalTask,
@@ -30,7 +30,7 @@ const ButtonsBar = (props) => {
         actionTypes.SHOW_COMPLETED,
         props.buttonState
       )}
-    </>
+    </div>
   );
 };
 

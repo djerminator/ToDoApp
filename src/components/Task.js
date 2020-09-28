@@ -18,9 +18,6 @@ const TaskComponent = (props) => {
           justifyContent: "center",
           margin: "5px"
         }}
-        size="20"
-        height="20"
-        width="20"
       >
         {task}
       </div>

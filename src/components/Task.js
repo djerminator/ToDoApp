@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TasklistIcon, TrashIcon } from "@primer/octicons-react";
+import { CheckIcon, TrashIcon } from "@primer/octicons-react";
 import {
   Div,
   ButtonComplete,
@@ -18,7 +18,7 @@ const TaskComponent = (props) => {
             title="Task Completed"
             onClick={() => props.onCompleted(id)}
           >
-            <TasklistIcon size={20} />
+            <CheckIcon size={20} />
           </ButtonComplete>
         )}
         <ButtonDelete title="Delete Task" onClick={() => props.onDelete(id)}>

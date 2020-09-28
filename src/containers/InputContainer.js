@@ -32,7 +32,7 @@ const InputContainer = (props) => {
       return false;
     }
     let taskDoesNotExist = true;
-    console.log("taskName", taskName);
+
     props.toDolist.forEach((item) => {
       if (item.task === taskName && item.pending) {
         taskDoesNotExist = false;

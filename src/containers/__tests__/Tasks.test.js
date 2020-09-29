@@ -1,6 +1,6 @@
 import Enzyme, { mount, shallow } from "enzyme";
 import React from "react";
-import { Tasks } from "../Tasks";
+import { Tasks, Hr } from "../Tasks";
 import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
@@ -26,7 +26,7 @@ describe("MainContainer", () => {
   });
 
   it("hr should not present when tasks are passed", () => {
-    expect(tasksComponent.find("hr").length).toEqual(0);
+    expect(tasksComponent.find(Hr).length).toEqual(0);
   });
 
   it("TaskComponent should be present when tasks are passed", () => {
@@ -35,7 +35,8 @@ describe("MainContainer", () => {
 });
 describe("TasksContainer when tasks are not passed", () => {
   it(" hr should be present when tasks are passed", () => {
-    let component = shallow(<Tasks tasks={[]} />);
-    expect(component.find("hr").length).toEqual(1);
+    const taskArray = [];
+    let component = shallow(<Tasks tasks={taskArray} />);
+    expect(component.find(Hr).length).toEqual(1);
   });
 });
